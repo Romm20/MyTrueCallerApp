@@ -1,0 +1,9 @@
+You → edit code
+        ↓
+git add .
+        ↓
+git commit -m "Add contacts list"
+        ↓
+git push
+        ↓
+GitHub updated ✅
