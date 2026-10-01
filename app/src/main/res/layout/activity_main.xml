@@ -1,15 +1,17 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
+
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/main"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/white"
     android:orientation="vertical"
-    android:padding="15dp"
+    android:padding="20dp"
+    android:background="@drawable/white"
     tools:context=".MainActivity">
 
+    <!-- BIENVENUE : NE PAS MODIFIER -->
     <TextView
         android:id="@+id/textView"
         android:layout_width="match_parent"
@@ -19,54 +21,61 @@
         android:textColor="#FF0056"
         android:textSize="34sp" />
 
-    <LinearLayout
+    <!-- Email -->
+    <TextView
+        android:id="@+id/textView2"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="horizontal">
+        android:text="Email"
+        android:textColor="#E90000"
+        android:textSize="20sp"
+        android:textStyle="bold"
+        android:layout_marginBottom="5dp" />
 
-        <TextView
-            android:id="@+id/textView2"
-            android:layout_width="158dp"
-            android:layout_height="wrap_content"
-            android:text="Email"
-            android:textColor="#E90000"
-            android:textSize="24sp" />
-
-        <EditText
-            android:id="@+id/edEmail_auth"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:ems="10"
-            android:hint="email@site.com"
-            android:inputType="textEmailAddress"
-            android:textColor="#000000" />
-    </LinearLayout>
-
-    <LinearLayout
+    <EditText
+        android:id="@+id/edEmail_auth"
         android:layout_width="match_parent"
-        android:layout_height="82dp"
-        android:orientation="horizontal">
+        android:layout_height="55dp"
+        android:hint="email@site.com"
+        android:inputType="textEmailAddress"
+        android:padding="12dp"
+        android:textColor="#000000"
+        android:textColorHint="#999999"
+        android:backgroundTint="#FF0056" />
 
-        <TextView
-            android:id="@+id/textView3"
-            android:layout_width="89dp"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:text="Password "
-            android:textColor="#E60707"
-            android:textSize="24sp" />
+    <!-- Espace -->
+    <Space
+        android:layout_width="match_parent"
+        android:layout_height="20dp" />
 
-        <EditText
-            android:id="@+id/edpwd_auth"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:ems="10"
-            android:hint="******"
-            android:inputType="textPassword"
-            android:textColor="#050505" />
-    </LinearLayout>
+    <!-- Password -->
+    <TextView
+        android:id="@+id/textView3"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Password"
+        android:textColor="#E60707"
+        android:textSize="20sp"
+        android:textStyle="bold"
+        android:layout_marginBottom="5dp" />
 
+    <EditText
+        android:id="@+id/edpwd_auth"
+        android:layout_width="match_parent"
+        android:layout_height="55dp"
+        android:hint="******"
+        android:inputType="textPassword"
+        android:padding="12dp"
+        android:textColor="#000000"
+        android:textColorHint="#999999"
+        android:backgroundTint="#FF0056" />
+
+    <!-- Espace -->
+    <Space
+        android:layout_width="match_parent"
+        android:layout_height="30dp" />
+
+    <!-- Boutons -->
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -74,18 +83,28 @@
 
         <Button
             android:id="@+id/btnVal_auth"
-            android:layout_width="215dp"
-            android:layout_height="wrap_content"
+            android:layout_width="0dp"
+            android:layout_height="55dp"
+            android:layout_weight="1"
+            android:layout_marginEnd="8dp"
             android:backgroundTint="#4CAF50"
-            android:text="Valider" />
+            android:text="Valider"
+            android:textColor="#FFFFFF"
+            android:textSize="16sp"
+            android:textStyle="bold" />
 
         <Button
             android:id="@+id/btnqte_auth"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_width="0dp"
+            android:layout_height="55dp"
             android:layout_weight="1"
+            android:layout_marginStart="8dp"
             android:backgroundTint="#000000"
             android:text="Quitter"
-            android:textColor="#FAFAFA" />
+            android:textColor="#FFFFFF"
+            android:textSize="16sp"
+            android:textStyle="bold" />
+
     </LinearLayout>
+
 </LinearLayout>
