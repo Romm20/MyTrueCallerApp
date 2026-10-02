@@ -23,15 +23,23 @@ public class MainActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+
+
+
         //mettre un xml sur l'ecran
         setContentView(R.layout.activity_main);
+
+
+
         //recuperation des composantes
+
         edemail =findViewById(R.id.edEmail_auth);
         edpwd = findViewById(R.id.edpwd_auth);
 
         btnVal = findViewById(R.id.btnVal_auth);
         BtnQte = findViewById(R.id.btnqte_auth);
         //EVENement
+
 
 
         BtnQte.setOnClickListener(new View.OnClickListener() {
@@ -64,7 +72,6 @@ public class MainActivity extends AppCompatActivity {
                 }
             }
         });
-
 
     }
 }

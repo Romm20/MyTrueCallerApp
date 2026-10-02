@@ -13,7 +13,14 @@ import androidx.core.graphics.Insets;
 import androidx.core.view.ViewCompat;
 import androidx.core.view.WindowInsetsCompat;
 
+import java.util.ArrayList;
+
 public class Accueil extends AppCompatActivity {
+
+    public static ArrayList<Contact> data=new ArrayList<>();
+
+
+
     //declaration des composantes
     Button btnAjt,btnAffich;
 
