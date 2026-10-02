@@ -2,18 +2,22 @@ package com.example.mytruecallerapp;
 
 public class Contact {
     String nom,pseudo,numero;
+    int id;
 
-    public Contact(String numero, String pseudo, String nom) {
+    public Contact(int id,String nom, String pseudo, String numero) {
+        this.id = id;
+        this.nom = nom;
         this.numero = numero;
         this.pseudo = pseudo;
-        this.nom = nom;
+
     }
 
 
     @Override
     public String toString() {
         return "Contact{" +
-                "nom='" + nom + '\'' +
+                "id=" + id +
+                ", nom='" + nom + '\'' +
                 ", pseudo='" + pseudo + '\'' +
                 ", numero='" + numero + '\'' +
                 '}';

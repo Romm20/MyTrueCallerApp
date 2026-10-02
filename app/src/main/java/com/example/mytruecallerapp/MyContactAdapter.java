@@ -18,9 +18,11 @@ import java.util.ArrayList;
 public class MyContactAdapter extends BaseAdapter {
     Context con;
     ArrayList<Contact> data ;
+    DatabaseHelper db;
     MyContactAdapter(Context con, ArrayList<Contact> data){
         this.con=con;
         this.data=data;
+        db = new DatabaseHelper(con);
 
 
     }
@@ -93,8 +95,18 @@ public class MyContactAdapter extends BaseAdapter {
                 alert.setPositiveButton("confirmer", new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialog, int which) {
-                        data.remove(position);
-                        notifyDataSetChanged();//refreched
+                        /*data.remove(position);
+                        notifyDataSetChanged();//refreched*/
+                        Contact contact = data.get(position);
+
+                        int result = db.deleteContact(contact.id);
+
+                        if (result > 0) {
+
+                            data.remove(position);
+
+                            notifyDataSetChanged();
+                        }
 
                     }
                 });

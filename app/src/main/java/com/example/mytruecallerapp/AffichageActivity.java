@@ -1,45 +1,47 @@
 package com.example.mytruecallerapp;
 
 import android.os.Bundle;
-import android.text.Editable;
-import android.text.TextWatcher;
-import android.widget.ArrayAdapter;
 import android.widget.EditText;
 import android.widget.ListView;
 
 import androidx.appcompat.app.AppCompatActivity;
+
+import java.util.ArrayList;
 
 public class AffichageActivity extends AppCompatActivity {
 
     ListView listContacts;
     EditText edRecherche;
 
+    DatabaseHelper db;
+
+    ArrayList<Contact> data;
+
+    MyContactAdapter adapter;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+
         super.onCreate(savedInstanceState);
 
         setContentView(R.layout.affichage);
 
-        // Récupérer les composants
+        // Composants
         listContacts = findViewById(R.id.lv_affiche);
         edRecherche = findViewById(R.id.ed_recherche);
 
-        /*ArrayAdapter ad= new ArrayAdapter<>(AffichageActivity.this, android.R.layout.simple_list_item_1);*/
+        // Database
+        db = new DatabaseHelper(this);
 
-        MyContactAdapter ad=new MyContactAdapter(AffichageActivity.this,Accueil.data);
+        // Récupérer les contacts
+        data = db.getAllContacts();
 
-        listContacts.setAdapter(ad);
+        // Adapter
+        adapter = new MyContactAdapter(
+                AffichageActivity.this,
+                data
+        );
 
-
-
-
-
-
-
-
-
-
-
-
+        listContacts.setAdapter(adapter);
     }
 }
