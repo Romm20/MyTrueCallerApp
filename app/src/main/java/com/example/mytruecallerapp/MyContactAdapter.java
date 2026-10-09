@@ -51,6 +51,8 @@ public class MyContactAdapter extends BaseAdapter {
     @Override
     public View getView(int position, View convertView, ViewGroup parent) {
         //creation d'un view pour chaque position : VIEWHOLDER
+
+
         //convertir : parse xml to java
         LayoutInflater inf = LayoutInflater.from(con);
         View v =inf.inflate(R.layout.view_contact,null);
@@ -62,8 +64,6 @@ public class MyContactAdapter extends BaseAdapter {
         ImageView imgCall=v.findViewById(R.id.imageViewCall_contact);
         ImageView imgDelete=v.findViewById(R.id.imageViewDelete_contact);
         ImageView imgEdit=v.findViewById(R.id.imageViewEdit_contact);
-
-
 
 
         //affectation des holders

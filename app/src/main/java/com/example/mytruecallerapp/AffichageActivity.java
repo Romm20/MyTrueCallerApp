@@ -37,7 +37,7 @@ public class AffichageActivity extends AppCompatActivity {
         data = db.getAllContacts();
 
         // Initialiser l'adapter
-        adapter = new MyContactAdapter(this, data);
+        //*adapter = new MyContactAdapter(this, data);
         listContacts.setAdapter(adapter);
 
         // Recherche en temps réel
