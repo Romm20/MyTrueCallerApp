@@ -1,6 +1,9 @@
 package com.example.mytruecallerapp;
 
 import android.content.Context;
+import android.content.DialogInterface;
+import android.content.Intent;
+import android.net.Uri;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -8,6 +11,7 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
+import androidx.appcompat.app.AlertDialog;
 import androidx.recyclerview.widget.RecyclerView;
 
 import java.util.ArrayList;
@@ -16,10 +20,13 @@ public class MyRecyclerContactAdapter extends RecyclerView.Adapter<MyRecyclerCon
 
     Context con;
     ArrayList<Contact> data ;
+    DatabaseHelper db;
 
     public MyRecyclerContactAdapter(Context con,ArrayList<Contact> data) {
         this.con=con;
         this.data = data;
+        db = new DatabaseHelper(con);
+
     }
 
 
@@ -54,6 +61,7 @@ public class MyRecyclerContactAdapter extends RecyclerView.Adapter<MyRecyclerCon
 
     public class MyViewHolder extends RecyclerView.ViewHolder {
 
+
         TextView tvnom,tvpseudo,tvnumero;
         ImageView imgCall,imgDelete,imgEdit;
 
@@ -70,6 +78,57 @@ public class MyRecyclerContactAdapter extends RecyclerView.Adapter<MyRecyclerCon
              imgDelete=v.findViewById(R.id.imageViewDelete_contact);
              imgEdit=v.findViewById(R.id.imageViewEdit_contact);
 
+
+             //Event
+            imgCall.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    int selectedIndex=getAdapterPosition();
+                    Contact selectedContact=data.get(selectedIndex);
+                    // numerotation
+                    Intent i=new Intent();
+                    i.setAction(Intent.ACTION_DIAL);
+                    i.setData(Uri.parse("tel"+selectedContact.numero));
+                    con.startActivity(i);
+                }
+            });
+            imgDelete.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    int selectedIndex=getAdapterPosition();
+                    //supprimer de la base de donner SQlite si c bon alors => a faire
+                    //afficher une boite de dialogue
+                    AlertDialog.Builder alert=new AlertDialog.Builder(con);
+                    alert.setTitle("suppresion");
+                    alert.setMessage("confirmer la suppression");
+                    alert.setPositiveButton("confirmer", new DialogInterface.OnClickListener() {
+                        @Override
+                        public void onClick(DialogInterface dialog, int which) {
+                        /*data.remove(position);
+                        notifyDataSetChanged();//refreched*/
+                            Contact contact = data.get(selectedIndex);
+
+                            int result = db.deleteContact(contact.id);
+
+                            if (result > 0) {
+
+                                data.remove(selectedIndex);
+
+                                notifyDataSetChanged();
+                            }
+
+                        }
+                    });
+                    alert.setNegativeButton("Annuler",null);
+                    alert.show();
+
+                }
+            });
+
         }
+
+
+
+
     }
 }
