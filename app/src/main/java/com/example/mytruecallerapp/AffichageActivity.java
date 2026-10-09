@@ -20,7 +20,7 @@ public class AffichageActivity extends AppCompatActivity {
 
     DatabaseHelper db;
     ArrayList<Contact> data;
-    MyContactAdapter adapter;
+    MyRecyclerContactAdapter ad;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -39,17 +39,22 @@ public class AffichageActivity extends AppCompatActivity {
         data = db.getAllContacts();
 
         // Initialiser l'adapter
-        //*adapter = new MyContactAdapter(this, data);
-        //*listContacts.setAdapter(adapter);
+        // adapter = new MyContactAdapter(this, data);
+        // listContacts.setAdapter(adapter);
 
-        MyRecyclerContactAdapter ad = new MyRecyclerContactAdapter(this,AffichageActivity.this.data);
+        ad = new MyRecyclerContactAdapter(this, data);
         listContacts.setAdapter(ad);
 
         //layout manager pour le recyler view
 
-        LinearLayoutManager layoutManager = new LinearLayoutManager(AffichageActivity.this,LinearLayoutManager.VERTICAL,false);
-        //*GridLayoutManager layoutManager = new GridLayoutManager(AffichageActivity.this,1,LinearLayoutManager.VERTICAL,true);
+        LinearLayoutManager layoutManager = new LinearLayoutManager(
+                AffichageActivity.this,
+                LinearLayoutManager.VERTICAL,
+                false
+        );
+        // GridLayoutManager layoutManager = new GridLayoutManager(AffichageActivity.this,1,LinearLayoutManager.VERTICAL,true);
         listContacts.setLayoutManager(layoutManager);
+
         // Recherche en temps réel
         edRecherche.addTextChangedListener(new TextWatcher() {
 
@@ -95,20 +100,19 @@ public class AffichageActivity extends AppCompatActivity {
         data.clear();
         data.addAll(resultats);
 
-        adapter.notifyDataSetChanged();
+        ad.notifyDataSetChanged();
     }
 
     @Override
     protected void onResume() {
         super.onResume();
 
-        if (db != null && adapter != null) {
-            String recherche = edRecherche.getText().toString();
+        if (db != null && ad != null) {
             data.clear();
             data.addAll(db.getAllContacts());
 
             // Réappliquer la recherche actuelle
-            rechercher(recherche);
+            rechercher(edRecherche.getText().toString());
         }
     }
 }
