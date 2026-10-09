@@ -7,6 +7,8 @@ import android.widget.EditText;
 import android.widget.ListView;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.recyclerview.widget.GridLayoutManager;
+import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import java.util.ArrayList;
@@ -38,8 +40,16 @@ public class AffichageActivity extends AppCompatActivity {
 
         // Initialiser l'adapter
         //*adapter = new MyContactAdapter(this, data);
-        listContacts.setAdapter(adapter);
+        //*listContacts.setAdapter(adapter);
 
+        MyRecyclerContactAdapter ad = new MyRecyclerContactAdapter(this,AffichageActivity.this.data);
+        listContacts.setAdapter(ad);
+
+        //layout manager pour le recyler view
+
+        LinearLayoutManager layoutManager = new LinearLayoutManager(AffichageActivity.this,LinearLayoutManager.VERTICAL,false);
+        //*GridLayoutManager layoutManager = new GridLayoutManager(AffichageActivity.this,1,LinearLayoutManager.VERTICAL,true);
+        listContacts.setLayoutManager(layoutManager);
         // Recherche en temps réel
         edRecherche.addTextChangedListener(new TextWatcher() {
 

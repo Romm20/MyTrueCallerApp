@@ -17,11 +17,8 @@ public class MyRecyclerContactAdapter extends RecyclerView.Adapter<MyRecyclerCon
     Context con;
     ArrayList<Contact> data ;
 
-    public MyRecyclerContactAdapter(Context con) {
-        this.con = con;
-    }
-
-    public MyRecyclerContactAdapter(ArrayList<Contact> data) {
+    public MyRecyclerContactAdapter(Context con,ArrayList<Contact> data) {
+        this.con=con;
         this.data = data;
     }
 
@@ -42,27 +39,36 @@ public class MyRecyclerContactAdapter extends RecyclerView.Adapter<MyRecyclerCon
 
     @Override
     public void onBindViewHolder(@NonNull MyRecyclerContactAdapter.MyViewHolder holder, int position) {
+        //affectation des holders
+        Contact c=data.get(position);
+        holder.tvnom.setText(c.nom);
+        holder.tvpseudo.setText(c.pseudo);
+        holder.tvnumero.setText(c.numero);
 
     }
 
     @Override
     public int getItemCount() {
-        return 0;
+        return data.size();
     }
 
     public class MyViewHolder extends RecyclerView.ViewHolder {
+
+        TextView tvnom,tvpseudo,tvnumero;
+        ImageView imgCall,imgDelete,imgEdit;
+
         public MyViewHolder(@NonNull View v) {
 
             super(v);
 
             //recup des holders
-            TextView tvnom=v.findViewById(R.id.tvnom_contact);
-            TextView tvpseudo=v.findViewById(R.id.tvpeudo_contact);
-            TextView tvnumero=v.findViewById(R.id.tvnumero_contact);
+             tvnom=v.findViewById(R.id.tvnom_contact);
+             tvpseudo=v.findViewById(R.id.tvpeudo_contact);
+             tvnumero=v.findViewById(R.id.tvnumero_contact);
 
-            ImageView imgCall=v.findViewById(R.id.imageViewCall_contact);
-            ImageView imgDelete=v.findViewById(R.id.imageViewDelete_contact);
-            ImageView imgEdit=v.findViewById(R.id.imageViewEdit_contact);
+             imgCall=v.findViewById(R.id.imageViewCall_contact);
+             imgDelete=v.findViewById(R.id.imageViewDelete_contact);
+             imgEdit=v.findViewById(R.id.imageViewEdit_contact);
 
         }
     }

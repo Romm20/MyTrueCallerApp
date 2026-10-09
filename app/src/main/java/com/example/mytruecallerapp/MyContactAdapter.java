@@ -67,7 +67,6 @@ public class MyContactAdapter extends BaseAdapter {
 
 
         //affectation des holders
-
         Contact c=data.get(position);
         tvnom.setText(c.nom);
         tvpseudo.setText(c.pseudo);
