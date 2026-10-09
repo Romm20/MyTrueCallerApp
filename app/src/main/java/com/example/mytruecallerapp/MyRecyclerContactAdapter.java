@@ -31,7 +31,7 @@ public class MyRecyclerContactAdapter extends RecyclerView.Adapter<MyRecyclerCon
         //convertir : parse xml to java
         LayoutInflater inf = LayoutInflater.from(con);
         View v =inf.inflate(R.layout.view_contact,null);
-        return null;
+        return new MyViewHolder(v);
     }
 
     @Override
